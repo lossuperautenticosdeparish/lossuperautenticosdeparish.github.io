@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HISOLTEC | Metalmecánica y Accesos - Estructuras y Automatización</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soluciones en metalmecánica: estructuras metálicas, techos, portones automáticos, barreras vehiculares y más. Hisoltec, ingeniería de calidad.">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_sin_fondo_hst.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== VARIABLES (HEREDADAS DEL INDEX) ===== */
+        :root {
+            --primary-dark: #0A192F;
+            --electric-blue: #2563EB;
+            --industrial-orange: #F27405;
+            --accent-green: #00C853;
+            --bg-light: #F5F7FA;
+            --white: #FFFFFF;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--primary-dark);
+            overflow-x: hidden;
+        }
+
+        /* TOP BAR INFO */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            font-size: 12px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-bar-info a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* HEADER NAV */
+        nav {
+            background-color: var(--primary-dark);
+            padding: 0px clamp(16px, 5%, 60px);
+            height: 72px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            display: block;
+        }
+
+        .menu-desktop {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .menu-desktop a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .menu-desktop a:hover, .menu-desktop a.active {
+            color: var(--industrial-orange);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--primary-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: none;
+            flex-direction: column;
+            width: 240px;
+            padding: 10px 0;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: flex;
+        }
+        .dropdown-menu a {
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+
+        .btn-cotizar {
+            background-color: var(--industrial-orange);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn-cotizar:hover {
+            background-color: #d66200;
+        }
+
+        .hamburger {
+            display: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO METALMECÁNICA ===== */
+        .hero-metal {
+            background: linear-gradient(90deg, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.7) 60%, rgba(10,25,47,0) 100%), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2000&auto=format') center/cover no-repeat;
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 8%;
+            color: var(--white);
+        }
+
+        .breadcrumbs {
+            font-size: 12px;
+            color: #94A3B8;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        .hero-metal h1 {
+            font-size: 52px;
+            font-weight: 800;
+            max-width: 700px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-metal h1 span {
+            color: var(--industrial-orange);
+        }
+
+        .hero-metal p {
+            font-size: 18px;
+            color: #E2E8F0;
+            max-width: 600px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .h-feat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #CBD5E1;
+        }
+
+        .h-feat-item i {
+            color: var(--industrial-orange);
+            font-size: 16px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-dark);
+        }
+
+        /* ===== SECCIONES COMUNES ===== */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        /* ===== SOLUCIONES GRID ===== */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--industrial-orange);
+        }
+
+        .sol-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sol-body {
+            padding: 25px;
+        }
+
+        .sol-body h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .sol-body p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .sol-link {
+            color: var(--industrial-orange);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        .sol-link:hover {
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== PROCESO DE TRABAJO ===== */
+        .process-bg {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .process-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid var(--industrial-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            color: var(--industrial-orange);
+            transition: 0.3s;
+        }
+
+        .process-step:hover .process-icon {
+            background: var(--industrial-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .process-step span {
+            font-size: 11px;
+            color: var(--industrial-orange);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .process-step h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            font-size: 12px;
+            color: #94A3B8;
+            line-height: 1.5;
+        }
+
+        /* ===== PROYECTOS ===== */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .proyecto-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .proyecto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .proyecto-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .proyecto-info {
+            padding: 15px;
+        }
+
+        .proyecto-info h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .proyecto-info p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .center-btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ===== WHY US ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .why-card i {
+            font-size: 36px;
+            color: var(--industrial-orange);
+            margin-bottom: 15px;
+        }
+
+        .why-card h4 {
+            font-size: 15px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .why-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ===== CTA BOX ===== */
+        .cta-box {
+            background: linear-gradient(rgba(10,25,47,0.92), rgba(10,25,47,0.96)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format') center/cover;
+            border-radius: 16px;
+            padding: 50px;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cta-content h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cta-content p {
+            font-size: 14px;
+            color: #94A3B8;
+        }
+
+        /* ===== FOOTER (HEREDADO DEL INDEX) ===== */
+        .main-footer {
+            background-color: #06131D;
+            color: var(--white);
+            padding: 60px 8% 30px 8%;
+            font-size: 13px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .footer-col p {
+            color: #94A3B8;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--industrial-orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #94A3B8;
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: var(--industrial-orange);
+        }
+
+        .footer-form input, .footer-form select, .footer-form textarea {
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        .footer-form select option {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .footer-form button {
+            background: var(--industrial-orange);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .footer-form button:hover {
+            background: #d66200;
+        }
+
+        .error-msg {
+            color: #EF4444;
+            font-size: 11px;
+            margin-top: -5px;
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            color: #64748B;
+            font-size: 12px;
+        }
+
+        .footer-bottom a {
+            color: #64748B;
+            text-decoration: none;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* ===== WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+            text-decoration: none;
+        }
+
+        /* ===== MENÚ MÓVIL ===== */
+        /* MENÚ MÓVIL LATERAL - CORREGIDO: Academia sin submenú, Soluciones CON submenú, y agregado HISOLTEC */
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 240px;
+            height: 100vh;
+            background: rgba(15,18,22,0.7);
+            backdrop-filter: blur(2px);
+            /*-webkit-backdrop-filter: blur(4px);*/
+            z-index: 3000;
+            transition: right 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+            padding: 30px 20px;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-panel.open {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-header h3 {
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-panel {
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 0;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-simple-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            border-left: 2px solid var(--electric-blue);
+        }
+
+        .mobile-submenu.open {
+            display: flex;
+        }
+
+        .mobile-submenu a {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-link-item.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .mobile-menu-panel .btn-cotizar {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 2500;
+            display: none;
+        }
+
+
+        /* ===== TOAST ===== */
+        .toast-notification {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        .toast-notification.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 5000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            max-height: calc(85vh - 70px);
+        }
+
+        .modal-body h4 {
+            color: #0A192F;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        .modal-body p {
+            color: #64748B;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            nav{
+                height: 56px;
+            }
+            .menu-desktop, .top-bar {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-metal h1 {
+                font-size: 32px;
+            }
+            .process-timeline {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay-bg" id="overlayBg" onclick="closeMobileMenu()"></div>
+    <div class="toast-notification" id="toastSuccess"><i class="fas fa-check-circle"></i> ¡Su solicitud fue enviada con éxito!</div>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <a href="tel:904932031"><i class="fas fa-phone"></i> Llámanos: 904 932 031</a>
+            <a href="mailto:ventas@hisoltec.com"><i class="fas fa-envelope"></i> ventas@hisoltec.com</a>
+            <span><i class="fas fa-clock"></i> Lun - Vie: 8:00 - 18:00</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <img src="Logo_hisoltec_blanco.png" alt="HISOLTEC LOGO">
+        </div>
+        <div class="menu-desktop">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <div class="dropdown">
+                <a href="#" class="active">Soluciones <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                <div class="dropdown-menu">
+                    <a href="automatizacion.html">Automatización Industrial</a>
+                    <a href="iot.html">IoT y Soluciones Inteligentes</a>
+                    <a href="ciberseguridad.html">Ciberseguridad IT/OT</a>
+                    <a href="seguridad-electronica.html">Seguridad Electrónica</a>
+                    <a href="metalmecanica.html">Metalmecánica y Accesos</a>
+                </div>
+            </div>
+            <a href="index.html#proyectos">Proyectos</a>
+            <a href="cursos.html">Academia</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="index.html#contacto">Contacto</a>
+            <a href="index.html#contacto" class="btn-cotizar">COTIZAR AHORA</a>
+        </div>
+        <div class="hamburger" onclick="openMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu-panel" id="mobilePanel">
+        <div class="mobile-header">
+            <h3>HISOLTEC</h3>
+            <div class="close-panel" onclick="closeMobileMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="mobile-links">
+            <a href="index.html" class="mobile-simple-link" onclick="closeMobileMenu()">Inicio</a>
+            <a href="index.html#nosotros" class="mobile-simple-link" onclick="closeMobileMenu()">Nosotros</a>
+            <div class="mobile-link-item" onclick="toggleSubmenu('submenuSoluciones', this)">
+                <span>Soluciones</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="mobile-submenu" id="submenuSoluciones">
+                <a href="automatizacion.html" onclick="closeMobileMenu()">Automatización Industrial</a>
+                <a href="iot.html" onclick="closeMobileMenu()">IoT y Soluciones Inteligentes</a>
+                <a href="ciberseguridad.html" onclick="closeMobileMenu()">Ciberseguridad IT/OT</a>
+                <a href="seguridad-electronica.html" onclick="closeMobileMenu()">Seguridad Electrónica</a>
+                <a href="metalmecanica.html" onclick="closeMobileMenu()">Metalmecánica y Accesos</a>
+            </div>
+            <a href="index.html#proyectos" class="mobile-simple-link" onclick="closeMobileMenu()">Proyectos</a>
+            <a href="cursos.html" class="mobile-simple-link" onclick="closeMobileMenu()">Academia</a>
+            <a href="index.html#blog" class="mobile-simple-link" onclick="closeMobileMenu()">Blog</a>
+            <a href="index.html#contacto" class="mobile-simple-link" onclick="closeMobileMenu()">Contacto</a>
+        </div>
+        <a href="index.html#contacto" class="btn-cotizar" onclick="closeMobileMenu()">COTIZAR AHORA</a>
+    </div>
+
+    <!-- HERO METALMECÁNICA -->
+    <header class="hero-metal">
+        <div class="breadcrumbs"><a href="index.html">Inicio</a> &gt; <a href="index.html#soluciones">Soluciones</a> &gt; <span>Metalmecánica y Accesos</span></div>
+        <h1>METALMECÁNICA <span>Y ACCESOS</span></h1>
+        <p>Diseñamos, fabricamos e instalamos estructuras metálicas y sistemas de acceso automatizados con los más altos estándares de calidad, resistencia y seguridad industrial.</p>
+        
+        <div class="hero-features">
+            <div class="h-feat-item"><i class="fas fa-compass-drafting"></i> Diseño Personalizado</div>
+            <div class="h-feat-item"><i class="fas fa-sheet-plastic"></i> Fabricación de Alta Calidad</div>
+            <div class="h-feat-item"><i class="fas fa-screwdriver-wrench"></i> Instalación Profesional</div>
+            <div class="h-feat-item"><i class="fas fa-gears"></i> Automatización Inteligente</div>
+            <div class="h-feat-item"><i class="fas fa-helmet-safety"></i> Mantenimiento Preventivo</div>
+        </div>
+        
+        <div class="hero-btns">
+            <a href="#soluciones" class="btn-cotizar" style="padding: 12px 30px;">VER SOLUCIONES</a>
+            <a href="#cotizar-footer" class="btn-outline">HABLAR CON UN ASESOR</a>
+        </div>
+    </header>
+
+    <!-- SOLUCIONES -->
+    <section id="soluciones">
+        <h2 class="section-title">Nuestras <span style="color: var(--industrial-orange);">Soluciones</span></h2>
+        <p class="section-subtitle">Soluciones integrales en metalmecánica y sistemas de control de acceso vehicular y peatonal</p>
+        
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('estructuras_metalicas.png');"></div>
+                <div class="sol-body">
+                    <h3>Estructuras Metálicas</h3>
+                    <p>Diseño, fabricación e instalación de almacenes, naves industriales, techados y coberturas de alta resistencia.</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('techoscobertoras.png');"></div>
+                <div class="sol-body">
+                    <h3>Techos y Coberturas</h3>
+                    <p>Soluciones de techados parabólicos, estructurados y coberturas metálicas para plantas o residenciales.</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('porton_auto.png');"></div>
+                <div class="sol-body">
+                    <h3>Portones Automáticos</h3>
+                    <p>Automatización e instalación de portones industriales y residenciales (corredizos, batientes, levadizos).</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('puertaindustrial.png');"></div>
+                <div class="sol-body">
+                    <h3>Puertas Industriales</h3>
+                    <p>Puertas seccionales, enrollables y cortafuegos de alta resistencia con motores de última generación.</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('barreravehicular.png');"></div>
+                <div class="sol-body">
+                    <h3>Barreras Vehiculares</h3>
+                    <p>Control de acceso de alto tránsito vehicular para condominios, empresas, centros comerciales y plantas.</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('rejasconcercos.png');"></div>
+                <div class="sol-body">
+                    <h3>Rejas y Cercos Perimétricos</h3>
+                    <p>Cerramientos de seguridad perimetral robustos y personalizados con acabados anticorrosivos.</p>
+                  
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('escaleras.png');"></div>
+                <div class="sol-body">
+                    <h3>Escaleras y Pasamanos</h3>
+                    <p>Estructuras de evacuación, de gato, barandas y pasamanos de acero inoxidable o fierro negro.</p>
+                    
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-img" style="background-image: url('mantenimiiento.png');"></div>
+                <div class="sol-body">
+                    <h3>Mantenimiento y Reparación</h3>
+                    <p>Servicio técnico predictivo, preventivo y correctivo para mantener operativos sus accesos automáticos.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO -->
+    <section class="process-bg">
+        <h2 class="section-title" style="color: white;">Proceso de Trabajo</h2>
+        <p class="section-subtitle" style="color: #94A3B8;">Garantizamos excelencia en cada etapa del proyecto</p>
+        
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-pencil-ruler"></i></div>
+                <span>01</span>
+                <h4>Diseño</h4>
+                <p>Levantamiento técnico y planos personalizados según sus necesidades.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-fire-burner"></i></div>
+                <span>02</span>
+                <h4>Fabricación</h4>
+                <p>Uso de materiales certificados de alta calidad y soldadura profesional.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-expand"></i></div>
+                <span>03</span>
+                <h4>Instalación</h4>
+                <p>Montaje seguro en campo respetando todas las normas de SST.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-microchip"></i></div>
+                <span>04</span>
+                <h4>Automatización</h4>
+                <p>Integración con motores y sistemas de control de acceso inteligente.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-toolbox"></i></div>
+                <span>05</span>
+                <h4>Mantenimiento</h4>
+                <p>Planes postventa estratégicos para maximizar el ciclo de vida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS DESTACADOS -->
+    <section style="background-color: var(--bg-light);">
+        <h2 class="section-title">Proyectos <span style="color: var(--industrial-orange);">Destacados</span></h2>
+        <p class="section-subtitle">Casos de éxito e implementaciones de gran envergadura</p>
+        
+        <div class="proyectos-grid">
+            <div class="proyecto-card">
+                <div class="proyecto-img" style="background-image: url('estructura_nave.png'); background-color: #ccc;"></div>
+                <div class="proyecto-info">
+                    <h4>Estructura Metálica Nave Industrial</h4>
+                    <p>Lima, Perú</p>
+                </div>
+            </div>
+            <div class="proyecto-card">
+                <div class="proyecto-img" style="background-image: url('techo_parabolico.png'); background-color: #ccc;"></div>
+                <div class="proyecto-info">
+                    <h4>Techado Parabólico Almacén Logístico</h4>
+                    <p>Callao, Perú</p>
+                </div>
+            </div>
+            <div class="proyecto-card">
+                <div class="proyecto-img" style="background-image: url('estructura_puerta.png'); background-color: #ccc;"></div>
+                <div class="proyecto-info">
+                    <h4>Portón Corredizo Automatizado Industrial</h4>
+                    <p>Condominio Residencial</p>
+                </div>
+            </div>
+            <div class="proyecto-card">
+                <div class="proyecto-img" style="background-image: url('barrera_vehicular.png'); background-color: #ccc;"></div>
+                <div class="proyecto-info">
+                    <h4>Barreras Vehiculares de Alto Tránsito</h4>
+                    <p>Centro Comercial</p>
+                </div>
+            </div>
+        </div>
+        <div class="center-btn">
+            <a href="index.html#proyectos" class="btn-cotizar">VER TODOS LOS PROYECTOS</a>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section>
+        <h2 class="section-title">¿Por qué elegir <span style="color: var(--industrial-orange);">Hisoltec</span>?</h2>
+        <p class="section-subtitle">Ingeniería, experiencia y materiales certificados de primer nivel</p>
+        
+        <div class="why-grid">
+            <div class="why-card">
+                <i class="fas fa-gears"></i>
+                <h4>Ingeniería Especializada</h4>
+                <p>Cálculos estructurales precisos y diseños adaptados a su espacio.</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-shield-halved"></i>
+                <h4>Materiales de Calidad</h4>
+                <p>Trabajamos con acero certificado y motores de alta fiabilidad.</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-user-gear"></i>
+                <h4>Personal Calificado</h4>
+                <p>Soldadores homologados e instaladores técnicos con amplia experiencia.</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-file-invoice"></i>
+                <h4>Cumplimiento de Normas</h4>
+                <p>Garantizamos estructuras alineadas a los estándares de seguridad nacionales.</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-handshake"></i>
+                <h4>Garantía y Soporte</h4>
+                <p>Respaldo sólido postventa y atención ante emergencias operativas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BOX -->
+    <section>
+        <div class="cta-box">
+            <div class="cta-content">
+                <h2>¿Tienes un proyecto en mente?</h2>
+                <p>Contáctanos hoy y recibe una asesoría personalizada y cotización sin compromiso.</p>
+            </div>
+            <a href="#cotizar-footer" class="btn-cotizar" style="padding: 12px 35px;">SOLICITAR COTIZACIÓN</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer" id="cotizar-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--white);">HISOLTEC</h3>
+                <p>Somos una empresa peruana especializada en ingeniería, automatización, seguridad electrónica, ciberseguridad y soluciones tecnológicas integrales.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61583769705412"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/hisoltec-sac/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@HISOLTECSAC"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/hisoltec_sac/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@hisoltec.sac"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#soluciones">Soluciones</a></li>
+                    <li><a href="index.html#proyectos">Proyectos</a></li>
+                    <li><a href="cursos.html">Academia</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--industrial-orange); margin-right:5px;"></i> Calle José Boterin 583, La Perla, Callao, Perú</p>
+                <p><i class="fas fa-phone" style="color:var(--industrial-orange); margin-right:5px;"></i> 904 932 031</p>
+                <p><i class="fas fa-envelope" style="color:var(--industrial-orange); margin-right:5px;"></i> ventas@hisoltec.com</p>
+                <p><i class="fas fa-clock" style="color:var(--industrial-orange); margin-right:5px;"></i> Lun - Vie: 8:00 - 18:00</p>
+            </div>
+            <div class="footer-col">
+                <h4>Escríbenos</h4>
+                <form id="contactForm" class="footer-form" novalidate>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre *">
+                    <div class="error-msg" id="error-nombre"></div>
+                    <input type="email" id="correo" name="correo" placeholder="Correo *">
+                    <div class="error-msg" id="error-correo"></div>
+                    <input type="tel" id="celular" name="celular" placeholder="Celular *">
+                    <div class="error-msg" id="error-celular"></div>
+                    <select id="servicio" name="servicio">
+                        <option value="">Seleccione un servicio *</option>
+                        <option value="Automatización">Automatización Industrial</option>
+                        <option value="IoT">IoT y Soluciones Inteligentes</option>
+                        <option value="Ciberseguridad">Ciberseguridad IT/OT</option>
+                        <option value="Seguridad Electronica">Seguridad Electrónica</option>
+                        <option value="Metalmecanica">Metalmecánica y Accesos</option>
+                    </select>
+                    <div class="error-msg" id="error-servicio"></div>
+                    <textarea id="mensaje" name="mensaje" rows="3" placeholder="Mensaje adicional (Opcional)"></textarea>
+                    <button type="submit" id="submitBtn">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 HISOLTEC S.A.C. Todos los derechos reservados.</div>
+            <div>
+                <a href="javascript:void(0)" onclick="openModalPrivacidad()">Política de Privacidad</a>
+                <a href="javascript:void(0)" onclick="openModalTerminos()">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/51904932031" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- MODALES -->
+    <div id="modalTerminos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Términos y Condiciones</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+            <div class="modal-body">
+                <p><strong>Última actualización:</strong> 2026</p><hr>
+                <h4>1. Aceptación de los Términos</h4><p>Al acceder y utilizar el sitio web de HISOLTEC SAC, usted acepta cumplir con estos Términos y Condiciones.</p>
+                <h4>2. Servicios</h4><p>HISOLTEC SAC ofrece servicios de automatización industrial, IoT, ciberseguridad IT/OT, seguridad electrónica y metalmecánica.</p>
+                <h4>3. Cotizaciones y Presupuestos</h4><p>Las cotizaciones son referenciales. El presupuesto final será enviado por nuestro equipo comercial.</p>
+                <h4>4. Propiedad Intelectual</h4><p>Todo el contenido es propiedad de HISOLTEC SAC.</p>
+                <h4>5. Contacto</h4><p>Para consultas: ventas@hisoltec.com - 904 932 031</p>
+                <hr><button class="btn-cotizar" onclick="closeModal()" style="margin-top: 10px;">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalPrivacidad" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Política de Privacidad</h3><button class="modal-close" onclick="closeModalPrivacidad()">&times;</button></div>
+            <div class="modal-body">
+                <p><strong>Última actualización:</strong> 2026</p><hr>
+                <h4>1. Información que Recopilamos</h4><p>Recopilamos nombre, correo, teléfono y servicio de interés.</p>
+                <h4>2. Uso de la Información</h4><p>Usamos su información para responder consultas y enviar cotizaciones.</p>
+                <h4>3. Protección de Datos</h4><p>Implementamos medidas de seguridad para proteger su información.</p>
+                <h4>4. Contacto</h4><p>ventas@hisoltec.com - 904 932 031</p>
+                <hr><button class="btn-cotizar" onclick="closeModalPrivacidad()" style="margin-top: 10px;">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menú móvil
+        const mobilePanel = document.getElementById('mobilePanel');
+        const overlayBg = document.getElementById('overlayBg');
+        
+        function openMobileMenu() { mobilePanel.classList.add('open'); overlayBg.style.display = 'block'; }
+        function closeMobileMenu() { mobilePanel.classList.remove('open'); overlayBg.style.display = 'none'; }
+        
+        function toggleSubmenu(submenuId, element) {
+            const submenu = document.getElementById(submenuId);
+            submenu.classList.toggle('open');
+            element.classList.toggle('open');
+        }
+        
+        // Modales
+        function openModalTerminos() { document.getElementById('modalTerminos').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('modalTerminos').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function openModalPrivacidad() { document.getElementById('modalPrivacidad').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModalPrivacidad() { document.getElementById('modalPrivacidad').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
+        window.onclick = function(event) {
+            const modalTerminos = document.getElementById('modalTerminos');
+            const modalPrivacidad = document.getElementById('modalPrivacidad');
+            if (event.target === modalTerminos) closeModal();
+            if (event.target === modalPrivacidad) closeModalPrivacidad();
+        }
+        
+        // Formulario de contacto
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toastSuccess');
+        
+        function setError(fieldId, message) { const errorDiv = document.getElementById(`error-${fieldId}`); if (errorDiv) errorDiv.textContent = message; }
+        function clearErrors() { document.querySelectorAll('.error-msg').forEach(el => el.textContent = ''); }
+        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+        function isValidPhone(phone) { return /^9\d{8}$/.test(phone); }
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                clearErrors();
+                
+                const nombre = document.getElementById('nombre')?.value.trim() || '';
+                const correo = document.getElementById('correo')?.value.trim() || '';
+                const celular = document.getElementById('celular')?.value.trim() || '';
+                const servicio = document.getElementById('servicio')?.value || '';
+                
+                let hasErrors = false;
+                if (!nombre) { setError('nombre', 'Por favor ingresa tu nombre.'); hasErrors = true; }
+                if (!correo) { setError('correo', 'El correo electrónico es obligatorio.'); hasErrors = true; } 
+                else if (!isValidEmail(correo)) { setError('correo', 'Ingresa un correo válido.'); hasErrors = true; }
+                if (!celular) { setError('celular', 'El número de celular es obligatorio.'); hasErrors = true; } 
+                else if (!isValidPhone(celular)) { setError('celular', 'Debe tener 9 dígitos y empezar con 9.'); hasErrors = true; }
+                if (!servicio) { setError('servicio', 'Selecciona un servicio.'); hasErrors = true; }
+                if (hasErrors) return;
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+                const formData = new FormData(contactForm);
+                try {
+                    const response = await fetch('https://formspree.io/f/xpqyjqoe', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                    if (response.ok) {
+                        contactForm.reset();
+                        toast.classList.add('show');
+                        setTimeout(() => { toast.classList.remove('show'); }, 4000);
+                    } else { alert('Hubo un problema al enviar el mensaje. Intente de nuevo.'); }
+                } catch (error) { alert('Error de conexión. Verifique su internet.'); }
+                finally { submitBtn.disabled = false; submitBtn.textContent = 'Enviar Solicitud'; }
+            });
+        }
+    </script>
+</body>
+</html>

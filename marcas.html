@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HISOLTEC | Prueba de Logos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F8FAFC;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .brands-container {
+            background-color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .brands-container p {
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .brands-container h2 {
+            font-size: 28px;
+            color: #0A192F;
+            margin-bottom: 40px;
+        }
+
+        .brands-slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            max-width: 130px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E2E8F0;
+            font-size: 13px;
+            color: #64748B;
+        }
+
+        .note.success {
+            color: #10B981;
+        }
+
+        .note.error {
+            color: #EF4444;
+        }
+
+         /* ===== MENÚ MÓVIL ===== */
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(15,18,22,0.7);
+            backdrop-filter: blur(2px);
+            z-index: 3000;
+            transition: right 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+            padding: 30px 20px;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-panel.open {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-header h3 {
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-panel {
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 0;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-simple-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            border-left: 2px solid var(--electric-blue);
+        }
+
+        .mobile-submenu.open {
+            display: flex;
+        }
+
+        .mobile-submenu a {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-link-item.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .mobile-menu-panel .btn-cotizar {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 2500;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="brands-container">
+        <p>Tecnologías que dominamos</p>
+        <h2>ALIADOS ESTRATÉGICOS</h2>
+        
+        <div class="brands-slider" id="brandsSlider">
+            <img src="siemens-energy.svg" alt="Siemens" class="brand-logo" id="logo-siemens">
+            <img src="rockwell-automation.svg" alt="Rockwell" class="brand-logo" id="logo-rockwell">
+            <img src="abb-logo.svg" alt="ABB" class="brand-logo" id="logo-abb">
+            <img src="fl-schneider-electric.svg" alt="Schneider" class="brand-logo" id="logo-schneider">
+            <img src="danfoss.svg" alt="Danfoss" class="brand-logo" id="logo-danfoss">
+            <img src="emerson-electric.svg" alt="Emerson" class="brand-logo" id="logo-emerson">
+            <img src="mitsubishi-electric.svg" alt="Mitsubishi Electric" class="brand-logo" id="logo-mitsubishi">
+            <img src="honeywell.svg" alt="Honeywell" class="brand-logo" id="logo-honeywell">
+        </div>
+
+        <div class="note" id="statusMessage">
+            🔍 Verificando logos...
+        </div>
+    </div>
+
+    <script>
+        // Lista de logos a verificar
+        const logos = [
+            { id: 'logo-siemens', name: 'Siemens' },
+            { id: 'logo-rockwell', name: 'Rockwell' },
+            { id: 'logo-abb', name: 'ABB' },
+            { id: 'logo-schneider', name: 'Schneider' },
+            { id: 'logo-danfoss', name: 'Danfoss' },
+            { id: 'logo-emerson', name: 'Emerson' },
+            { id: 'logo-mitsubishi', name: 'Mitsubishi Electric' },
+            { id: 'logo-honeywell', name: 'Honeywell' }
+        ];
+
+        let loadedCount = 0;
+        let failedCount = 0;
+        const failedLogos = [];
+
+        logos.forEach(logo => {
+            const img = document.getElementById(logo.id);
+            
+            img.addEventListener('load', function() {
+                loadedCount++;
+                checkComplete();
+            });
+            
+            img.addEventListener('error', function() {
+                failedCount++;
+                failedLogos.push(logo.name);
+                img.style.display = 'none';
+                
+                // Mostrar fallback de texto
+                const fallback = document.createElement('span');
+                fallback.textContent = logo.name;
+                fallback.style.cssText = 'background: #F1F5F9; padding: 8px 20px; border-radius: 40px; font-weight: 600; font-size: 14px; color: #1E293B;';
+                img.parentNode.insertBefore(fallback, img.nextSibling);
+                
+                checkComplete();
+            });
+        });
+
+        function checkComplete() {
+            const total = logos.length;
+            const statusDiv = document.getElementById('statusMessage');
+            
+            if (failedCount === 0 && loadedCount === total) {
+                statusDiv.innerHTML = '✅ ¡TODOS los logos se cargaron correctamente! Puedes copiar esta sección a tu index.html';
+                statusDiv.className = 'note success';
+            } else if (failedCount > 0) {
+                statusDiv.innerHTML = `⚠️ ${failedCount} logo(s) no se cargaron: ${failedLogos.join(', ')}.<br>Verifica que los archivos .svg estén en la misma carpeta que este archivo.`;
+                statusDiv.className = 'note error';
+            } else {
+                statusDiv.innerHTML = `📦 Cargando... (${loadedCount}/${total} logos cargados)`;
+            }
+        }
+    </script>
+</body>
+</html>

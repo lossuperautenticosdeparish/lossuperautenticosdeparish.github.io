@@ -1,0 +1,184 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f5f7fa;
+color:#222;
+}
+
+header{
+background:#0b1f3a;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h2{
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+height:90vh;
+background:linear-gradient(
+rgba(0,0,0,.6),
+rgba(0,0,0,.6)),
+url('img/industrial.jpg');
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero-content{
+width:80%;
+max-width:1000px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.2rem;
+margin-bottom:30px;
+}
+
+.btn-primary{
+background:#0077ff;
+padding:15px 30px;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+.btn-secondary{
+background:#00b894;
+padding:15px 30px;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+.services{
+padding:80px 8%;
+}
+
+.services h2{
+text-align:center;
+margin-bottom:50px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.card i{
+font-size:45px;
+color:#0077ff;
+margin-bottom:20px;
+}
+
+.card a{
+display:inline-block;
+margin-top:15px;
+color:#0077ff;
+text-decoration:none;
+}
+
+.why-us,
+.brands,
+.projects,
+.academy,
+.contact{
+padding:80px 8%;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.brand-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:40px;
+font-weight:bold;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+.project{
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.08);
+}
+
+.contact form{
+display:flex;
+flex-direction:column;
+gap:20px;
+max-width:600px;
+margin:auto;
+}
+
+input,
+textarea{
+padding:15px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+button{
+background:#0077ff;
+color:white;
+border:none;
+padding:15px;
+cursor:pointer;
+border-radius:8px;
+}
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px;
+}
